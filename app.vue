@@ -1,5 +1,11 @@
 <template>
   <div>
-    <NuxtPage />
+    <MenuCEL />
+    <v-app class="justify-content-center align-items-center mb-6">
+      <v-container fill-height style="margin: 0 auto">
+        <NuxtPage />
+      </v-container>
+      <NavBottomCEL />
+    </v-app>
   </div>
 </template>

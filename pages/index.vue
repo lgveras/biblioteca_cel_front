@@ -1,61 +1,31 @@
 <template>
-  <v-app class="justify-content-center align-items-center mb-6">
-    <div id="menu-bar" class="menu-style color-menu">
-      <div id="marker-menu">
-        <v-icon>mdi-map-marker</v-icon>
-        <a href="">CEL</a>
-      </div>
-
-      <div id="menu-itens">
-        <v-btn density="compact" icon="mdi-cog" variant="text">
-        </v-btn>
-        <v-btn density="compact" icon="mdi-brightness-4" variant="text">
-        </v-btn>
-        <v-btn density="compact" icon="mdi-cart-outline" variant="text">
-        </v-btn>
-      </div>
-    </div>
-
-    <v-container fill-height style="margin: 0 auto">
       <v-col cols="12">
-        <div id="menu-bar-pc" class="menu-style w-100 mb-10">
-          <div id="title-menu" class="w-100">
-            <div id="logo">
-              <img src="@/images/cel_logo.jpg" alt="Logo do CEL">
-            </div>
-            <div id="title" class="color-menu">
-              Sistema de Bibliotecas do CEL
-            </div>
-          </div>
-
-          <div id="menu-btns">
-            <v-btn class="color-menu btn-menu" prepend-icon="mdi-map-marker">
-              Localização
-            </v-btn>
-            <v-btn class="color-menu btn-menu" prepend-icon="mdi-cog">
-              Configuração
-            </v-btn>
-            <v-btn class="color-menu btn-menu" prepend-icon="mdi-cart-outline">
-              Pedidos
-            </v-btn>
-            <v-btn class="color-menu btn-menu" prepend-icon="mdi-menu">
-              Resenha
-            </v-btn>
-            <v-btn class="color-menu btn-menu" prepend-icon="mdi-heart">
-              Favoritas
-            </v-btn>
-            <v-btn class="color-menu btn-menu" prepend-icon="mdi-account">
-              Login/Usuário
-            </v-btn>
-          </div>
-        </div>
-
         <div id="search-bar">
-          <v-text-field class="mb-10" label="Título, autor, editora ..." hide-details="auto">
-          <v-icon id="search-icon" class="pb-6" size="x-large" :icon="'mdi-magnify'" />
-        </v-text-field>
+          <!-- <v-text-field class="mb-10" label="Título, autor, editora ..." hide-details="auto">
+            <v-icon id="search-icon" class="pb-6" size="x-large" :icon="'mdi-magnify'" />
+          </v-text-field> -->
+          <v-autocomplete
+            v-model="idSelectedSearch"
+            v-model:search="keywordTyping"
+            :loading="loading"
+            :items="items"
+            class="mb-10"
+            size="x-large"
+            density="comfortable"
+            item-title="titulo"
+            item-value="id"
+            label="Digite o título do exemplar..."
+            prepend-icon="mdi-magnify"
+          >
+            <template v-slot:item="obj">
+              <div>
+                <NuxtLink :to="`/exemplar/${obj.item.value}`">
+                {{obj.item.value}}-{{obj.item.title}}
+              </NuxtLink>
+              </div>             
+            </template>
+          </v-autocomplete>
         </div>
-      
 
         <div id="language-selector" class="mb-10">
           <h1>Idiomas</h1>
@@ -72,13 +42,34 @@
           </template> -->
 
             <v-carousel-item>
-              <div onclick="alert('Clicou')" class="idioma"><img src="../images/spain.jpg" alt=""></div>
+              <NuxtLink to="/porlingua/espanhol">
+                <div class="idioma"><img src="/images/spain.png" alt=""></div>
+              </NuxtLink>
             </v-carousel-item>
             <v-carousel-item>
-              <div class="idioma"><img src="../images/spain.jpg" alt=""></div>
+              <NuxtLink to="/porlingua/alemao">
+                <div class="idioma"><img src="/images/germany.png" alt=""></div>
+              </NuxtLink>
             </v-carousel-item>
             <v-carousel-item>
-              <div class="idioma"><img src="../images/spain.jpg" alt=""></div>
+              <NuxtLink to="/porlingua/português">
+                <div class="idioma"><img src="/images/brazil.png" alt=""></div>
+              </NuxtLink>
+            </v-carousel-item>
+            <v-carousel-item>
+              <NuxtLink to="/porlingua/italiano">
+                <div class="idioma"><img src="/images/italy.png" alt=""></div>
+              </NuxtLink>
+            </v-carousel-item>
+            <v-carousel-item>
+              <NuxtLink to="/porlingua/russo">
+                <div class="idioma"><img src="/images/russia.png" alt=""></div>
+              </NuxtLink>
+            </v-carousel-item>
+            <v-carousel-item>
+              <NuxtLink to="/porlingua/hebraico">
+                <div class="idioma"><img src="/images/israel.png" alt=""></div>
+              </NuxtLink>
             </v-carousel-item>
           </v-carousel>
         </div>
@@ -89,7 +80,7 @@
             <v-card class="mx-auto mb-2">
               <div class="d-flex flex-no-wrap justify-space-between">
                 <div class="book-item">
-                  <img src="@/images/cover-decartes.jpg" alt="Capa do Livro">
+                  <img src="/images/cover-decartes.jpg" alt="Capa do Livro">
                 </div>
                 <div class="d-flex flex-column justify-space-between">
                   <div>
@@ -113,12 +104,12 @@
                 </div>
                 <div class="d-flex flex-column justify-space-between">
                   <div>
-                    <v-card-title class="text-h5 text-wrap">
+                    <v-card-title class="title-style text-h5 text-wrap">
                       O dircurso do método
                     </v-card-title>
                     <v-card-subtitle>Rene Decartes</v-card-subtitle>
                   </div>
-                  <v-card-actions class="action-book">
+                  <v-card-actions class="title-style action-book">
                     <v-btn density="comfortable" class="ms-1" size="x-small" prepend-icon="mdi-plus" stacked
                       variant="tonal"></v-btn>
                   </v-card-actions>
@@ -133,7 +124,7 @@
                 </div>
                 <div class="d-flex flex-column justify-space-between">
                   <div>
-                    <v-card-title class="text-h5 text-wrap">
+                    <v-card-title class="title-style text-h5 text-wrap">
                       O dircurso do método
                     </v-card-title>
                     <v-card-subtitle>Rene Decartes</v-card-subtitle>
@@ -147,44 +138,46 @@
             </v-card>
           </div>
         </div>
-
-        <v-bottom-navigation grow class="menu-style bottom-navigation">
-          <v-btn value="recent">
-            <v-icon>mdi-home</v-icon>
-            Home
-          </v-btn>
-
-          <v-btn value="recent">
-            <v-icon>mdi-menu</v-icon>
-            Opções
-          </v-btn>
-
-          <v-btn value="favorites">
-            <v-icon>mdi-heart</v-icon>
-            Favoritos
-          </v-btn>
-
-          <v-btn value="nearby">
-            <v-icon>mdi-account</v-icon>
-            Cadastro
-          </v-btn>
-        </v-bottom-navigation>
-      </v-col>
-    </v-container>
-  </v-app>
+      </v-col>    
 </template>
 
 <script setup >
-  import {onMounted} from 'vue';
+  import { watch } from 'vue'
+
   const {$exemplar_api} = useNuxtApp();
 
-  onMounted(async ()=>{
-    // <p>{{ JSON.stringify($exemplar_api.getAll()) }}</p>
-    const response = await $exemplar_api.getAll();
-    // const response = "API calling";
-    console.log(response);
-    // console.log($myPlugin());
-  })
+  /* Variable to autocomplete */
+  let loading = false;
+  let items = [];
+
+  const keywordTyping = ref("");
+
+  // const querySelection = async () =>{
+  //   items = await $exemplar_api.getByTitle(keywordTyping.value);
+  // }
+
+  const search = watch(keywordTyping, async (newKeyword, oldKeyword)=>{
+    console.log("Palavra buscada: " + keywordTyping.value)
+    loading = true;
+    console.log(`Old: ${oldKeyword} - New: ${newKeyword}`);
+    const result = await $exemplar_api.getByTitle(newKeyword);
+    items = result;
+    // items = JSON.parse(JSON.stringify(result));
+    console.log("Está chegando aqui");
+    loading = false;
+  });
+
+  const showInfo = () => console.log(keywordTyping.value);
+
+  // onMounted(async ()=>{
+  //   // <p>{{ JSON.stringify($exemplar_api.getAll()) }}</p>
+  //   // console.log("API calling");
+  //   // // console.log($exemplar_api)
+  //   // const response = await $exemplar_api.getAll();
+  //   // const response = "API calling";
+  //   // console.log(response);
+  //   // console.log($myPlugin());
+  // })
 </script>
 
 <style scoped>
@@ -194,17 +187,12 @@
   box-sizing: border-box;
 }
 
-h1,
-h2 {
+.title-style{
+  font-family: Montserrat;
+}
+
+h1, h2 {
   font-family: 'Roboto', sans-serif;
-}
-
-.menu-style {
-  display: flex;
-}
-
-.color-menu {
-  background-color: aqua;
 }
 
 #search-icon {
@@ -258,6 +246,8 @@ img {
   }
 
   .idioma {
+    margin-left: auto !important;
+    margin-right: auto !important;
     width: 100px;
   }
 
@@ -313,7 +303,7 @@ img {
     gap: 20px
   }
 
-  #menu-btns>.btn-menu {
+  #menu-btns .btn-menu {
     font-size: x-small;
     flex-shrink: 1;
   }
@@ -334,6 +324,8 @@ img {
   }
 
   #idiomas-carousel .idioma {
+    margin-left: auto !important;
+    margin-right: auto !important;
     width: 200px;
   }
 
