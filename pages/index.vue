@@ -100,14 +100,14 @@
             <v-card class="mx-auto mb-2">
               <div class="d-flex  flex-no-wrap justify-space-between">
                 <div class="book-item">
-                  <img src="@/images/cover-decartes.jpg" alt="Capa do Livro">
+                  <img src="/images/cover-decartes.jpg" alt="Capa do Livro">
                 </div>
                 <div class="d-flex flex-column justify-space-between">
                   <div>
                     <v-card-title class="title-style text-h5 text-wrap">
                       O dircurso do método
                     </v-card-title>
-                    <v-card-subtitle>Rene Decartes</v-card-subtitle>
+                    <v-card-subtitle>Rene Descartes</v-card-subtitle>
                   </div>
                   <v-card-actions class="title-style action-book">
                     <v-btn density="comfortable" class="ms-1" size="x-small" prepend-icon="mdi-plus" stacked
@@ -120,14 +120,14 @@
             <v-card class="mx-auto mb-2">
               <div class="d-flex flex-no-wrap justify-space-between">
                 <div class="book-item">
-                  <img src="@/images/cover-decartes.jpg" alt="Capa do Livro">
+                  <img src="/images/cover-decartes.jpg" alt="Capa do Livro">
                 </div>
                 <div class="d-flex flex-column justify-space-between">
                   <div>
                     <v-card-title class="title-style text-h5 text-wrap">
                       O dircurso do método
                     </v-card-title>
-                    <v-card-subtitle>Rene Decartes</v-card-subtitle>
+                    <v-card-subtitle>Rene Descartes</v-card-subtitle>
                   </div>
                   <v-card-actions class="action-book">
                     <v-btn density="comfortable" class="ms-1" size="x-small" prepend-icon="mdi-plus" stacked
