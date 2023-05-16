@@ -19,7 +19,7 @@
         <div id="menu-bar-pc" class="menu-style w-100 mb-10">
             <div id="title-menu" class="w-100">
                 <div id="logo">
-                    <img src="@/images/cel_logo.jpg" alt="Logo do CEL">
+                    <img src="/images/cel_logo.jpg" alt="Logo do CEL">
                 </div>
                 <div id="title" class="color-menu">
                     Sistema de Bibliotecas do CEL
