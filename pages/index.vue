@@ -169,6 +169,8 @@
   margin: 0;
   text-decoration: none;
   box-sizing: border-box;
+  text-align: center;
+
 }
 
 .title-style{
@@ -191,6 +193,10 @@ img {
   max-height:500px;
   width: auto;
   height: auto;
+}
+
+#new-books{
+    text-align: center;
 }
 
 .action-book {
@@ -253,13 +259,8 @@ img {
     height: 100px !important;
   }
 
-
   .book-item {
     margin-left: 10px;
-    /* max-width: 198px; */
-    /* width: 100%;
-    display: grid;
-    place-content: center; */
   }
 }
 
@@ -325,10 +326,6 @@ img {
 
   #idiomas-carousel {
     height: 160px !important;
-  }
-
-  #new-books h1 {
-    text-align: center;
   }
 
   #list-new-books {
