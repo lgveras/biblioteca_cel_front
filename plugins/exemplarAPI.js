@@ -1,5 +1,5 @@
 export default defineNuxtPlugin(() => {
-    const baseUrl = 'https://bibcelapi.azurewebsites.net/';
+    const baseUrl = 'https://bibcelapi.azurewebsites.net';
     // const baseUrl = 'http://localhost:8000';
     return {
         provide: {
@@ -12,7 +12,7 @@ export default defineNuxtPlugin(() => {
                     return response.data.value;
                 },
                 getAllPagination: async({ page, itemsPerPage, sortBy}) =>{
-                    console.log(`${baseUrl}/catalogo/exemplar?page=${page}&itemsPerPage=${itemsPerPage}&sortBy=${sortBy}`);
+                    // console.log(`${baseUrl}/catalogo/exemplar?page=${page}&itemsPerPage=${itemsPerPage}&sortBy=${sortBy}`);
                     const response = await useFetch(`${baseUrl}/catalogo/exemplar?page=${page}&itemsPerPage=${itemsPerPage}&sortBy=titulo`, {
                         method: 'GET',
                     });                    
@@ -26,8 +26,11 @@ export default defineNuxtPlugin(() => {
                     return response.data.value;
                 },
                 getByTitle: async (keywordTitle) =>{
-                    const response = await useFetch(`${baseUrl}/catalogo/exemplar/${keywordTitle}`, {
+                    const response = await useFetch(`${baseUrl}/catalogo/exemplar/titulo`, {
                         method: 'GET',
+                        params:{
+                            titulo: keywordTitle,
+                        }
                     });
                     return response.data.value;
                 },
@@ -38,7 +41,7 @@ export default defineNuxtPlugin(() => {
                     return response.data.value;
                 },
                 getByLanguage: async ({ page, itemsPerPage, sortBy}, lingua) =>{
-                    console.log("Dentro de getByLanguage: " + lingua);
+                    // console.log("Dentro de getByLanguage: " + lingua);
                     const response = await useFetch(`${baseUrl}/catalogo/exemplar?page=${page}&itemsPerPage=${itemsPerPage}&sortBy=titulo&lingua=${lingua}`, {
                         method: 'GET',
                     });                    

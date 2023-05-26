@@ -91,7 +91,7 @@ img {
     align-self: flex-end;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 640px) {
     .menu-style {
         padding: 10px;
     }
@@ -128,10 +128,6 @@ img {
         height: 100px !important;
     }
 
-    .idioma {
-        width: 100px;
-    }
-
     .book-item {
         margin-left: 10px;
         max-width: 198px;
@@ -140,7 +136,7 @@ img {
     }
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 640px) {
     h1 {
         font-size: 3rem;
     }
@@ -179,12 +175,13 @@ img {
 
     #menu-btns {
         display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 20px
     }
 
     #menu-btns .btn-menu {
+        flex: 1 1 auto;
         font-size: x-small;
         flex-shrink: 1;
     }
@@ -202,10 +199,6 @@ img {
 
     #idiomas-carousel {
         height: 160px !important;
-    }
-
-    #idiomas-carousel .idioma {
-        width: 200px;
     }
 
     #new-books h1 {

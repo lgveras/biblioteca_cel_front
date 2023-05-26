@@ -10,7 +10,6 @@
             :loading="loading"
             :items="items"
             class="mb-10"
-            size="x-large"
             density="comfortable"
             item-title="titulo"
             item-value="id"
@@ -77,17 +76,17 @@
         <div id="new-books" style="max-width: 100vw;" theme="dark">
           <h1 class="mb-3">Novos Livros</h1>
           <div id="list-new-books">
-            <v-card class="mx-auto mb-2">
+            <v-card class="w-100 mx-auto mb-2">
               <div class="d-flex flex-no-wrap justify-space-between">
                 <div class="book-item">
-                  <img src="/images/cover-decartes.jpg" alt="Capa do Livro">
+                  <img src="https://m.media-amazon.com/images/I/418WxhuPhXL._SY344_BO1,204,203,200_QL70_ML2_.jpg" alt="Capa do Livro">
                 </div>
                 <div class="d-flex flex-column justify-space-between">
                   <div>
                     <v-card-title class="text-h5 text-wrap">
-                      O dircurso do método
+                      Dicionario Alemao 
                     </v-card-title>
-                    <v-card-subtitle>René Descartes</v-card-subtitle>
+                    <v-card-subtitle>Bicho Esperto</v-card-subtitle>
                   </div>
                   <v-card-actions class="action-book">
                     <v-btn density="comfortable" class="ms-1" size="x-small" prepend-icon="mdi-plus" stacked
@@ -97,17 +96,17 @@
               </div>
             </v-card>
 
-            <v-card class="mx-auto mb-2">
+            <v-card class="w-100 mx-auto mb-2">
               <div class="d-flex  flex-no-wrap justify-space-between">
                 <div class="book-item">
-                  <img src="/images/cover-decartes.jpg" alt="Capa do Livro">
+                  <img src="https://m.media-amazon.com/images/I/41wjX1ghfOL._SX346_BO1,204,203,200_.jpg" alt="Capa do Livro">
                 </div>
                 <div class="d-flex flex-column justify-space-between">
                   <div>
                     <v-card-title class="title-style text-h5 text-wrap">
-                      O dircurso do método
+                      Dicionário Latino - Português
                     </v-card-title>
-                    <v-card-subtitle>Rene Descartes</v-card-subtitle>
+                    <v-card-subtitle>Ernesto Faria</v-card-subtitle>
                   </div>
                   <v-card-actions class="title-style action-book">
                     <v-btn density="comfortable" class="ms-1" size="x-small" prepend-icon="mdi-plus" stacked
@@ -117,17 +116,17 @@
               </div>
             </v-card>
 
-            <v-card class="mx-auto mb-2">
+            <v-card class="w-100 mx-auto mb-2">
               <div class="d-flex flex-no-wrap justify-space-between">
                 <div class="book-item">
-                  <img src="/images/cover-decartes.jpg" alt="Capa do Livro">
+                  <img src="https://m.media-amazon.com/images/I/41bvXTh6hNL._SX368_BO1,204,203,200_.jpg" alt="Capa do Livro">
                 </div>
                 <div class="d-flex flex-column justify-space-between">
                   <div>
                     <v-card-title class="title-style text-h5 text-wrap">
-                      O dircurso do método
+                      Michaelis dicionário escolar italiano
                     </v-card-title>
-                    <v-card-subtitle>Rene Descartes</v-card-subtitle>
+                    <v-card-subtitle>André Guilherme Polito</v-card-subtitle>
                   </div>
                   <v-card-actions class="action-book">
                     <v-btn density="comfortable" class="ms-1" size="x-small" prepend-icon="mdi-plus" stacked
@@ -149,35 +148,20 @@
   /* Variable to autocomplete */
   let loading = false;
   let items = [];
+  let idSelectedSearch = ""; 
 
   const keywordTyping = ref("");
 
-  // const querySelection = async () =>{
-  //   items = await $exemplar_api.getByTitle(keywordTyping.value);
-  // }
-
   const search = watch(keywordTyping, async (newKeyword, oldKeyword)=>{
-    console.log("Palavra buscada: " + keywordTyping.value)
     loading = true;
-    console.log(`Old: ${oldKeyword} - New: ${newKeyword}`);
     const result = await $exemplar_api.getByTitle(newKeyword);
     items = result;
-    // items = JSON.parse(JSON.stringify(result));
-    console.log("Está chegando aqui");
     loading = false;
+    console.log(loading)
   });
 
   const showInfo = () => console.log(keywordTyping.value);
-
-  // onMounted(async ()=>{
-  //   // <p>{{ JSON.stringify($exemplar_api.getAll()) }}</p>
-  //   // console.log("API calling");
-  //   // // console.log($exemplar_api)
-  //   // const response = await $exemplar_api.getAll();
-  //   // const response = "API calling";
-  //   // console.log(response);
-  //   // console.log($myPlugin());
-  // })
+  
 </script>
 
 <style scoped>
@@ -201,14 +185,33 @@ h1, h2 {
 }
 
 img {
-  max-width: 80%;
+  /* max-width: 80%; */
+  display: block;
+  max-width:200px;
+  max-height:500px;
+  width: auto;
+  height: auto;
 }
 
 .action-book {
   align-self: flex-end;
 }
 
-@media screen and (max-width: 375px) {
+.idioma {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: flex;
+    justify-content: center;
+    /* max-width: 25%;  */
+    width: auto;
+    height: 100%; 
+  }
+
+  .idioma img{
+    max-width: 100%;
+  }
+
+@media screen and (max-width: 640px) {
   .menu-style {
     padding: 10px;
   }
@@ -245,21 +248,17 @@ img {
     height: 100px !important;
   }
 
-  .idioma {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: 100px;
-  }
 
   .book-item {
     margin-left: 10px;
-    max-width: 198px;
+    /* max-width: 198px; */
+    /* width: 100%;
     display: grid;
-    place-content: center;
+    place-content: center; */
   }
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 640px) {
   h1 {
     font-size: 3rem;
   }
@@ -321,12 +320,6 @@ img {
 
   #idiomas-carousel {
     height: 160px !important;
-  }
-
-  #idiomas-carousel .idioma {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: 200px;
   }
 
   #new-books h1 {

@@ -15,7 +15,7 @@
                 <div class="py-12 text-center">
                     <v-icon class="mb-6" color="success" icon="mdi-check-circle-outline" size="128"></v-icon>
 
-                    <div class="text-h4 font-weight-bold">O exemplar foi reservado</div>
+                    <div class="text-h4 font-weight-bold">O exemplar {{ novoExemplar.titulo }} foi criado</div>
                 </div>
 
                 <v-divider></v-divider>

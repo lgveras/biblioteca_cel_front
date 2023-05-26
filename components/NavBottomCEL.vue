@@ -1,35 +1,45 @@
 <template>
     <v-bottom-navigation grow class="menu-style bottom-navigation">
+        <NuxtLink to="/"> 
           <v-btn value="recent">
             <v-icon>mdi-home</v-icon>
             Home
           </v-btn>
+        </NuxtLink>
 
+        <NuxtLink to="/exemplares">
           <v-btn value="recent">
-            <v-icon>mdi-menu</v-icon>
+            <v-icon>mdi-book-open-page-variant</v-icon>
             Opções
           </v-btn>
+        </NuxtLink>
 
+        <NuxtLink to="/reservados">
           <v-btn value="favorites">
-            <v-icon>mdi-heart</v-icon>
+            <v-icon>mdi-cart-outline</v-icon>
             Favoritos
           </v-btn>
+        </NuxtLink>
 
+        <NuxtLink to="/novo">
           <v-btn value="nearby">
-            <v-icon>mdi-account</v-icon>
+            <v-icon>mdi-menu</v-icon>
             Cadastro
           </v-btn>
+        </NuxtLink>
+
         </v-bottom-navigation>
 </template>
 
 <style scoped>
 .menu-style {
     display: flex;
+    justify-content: space-between !important;
     background-color: aqua;
 }
 
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 640px) {
   .menu-style {
     padding: 10px;
   }
@@ -78,7 +88,7 @@
   }
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 640px) {
   h1 {
     font-size: 3rem;
   }
