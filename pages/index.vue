@@ -202,14 +202,19 @@ img {
     margin-right: auto !important;
     display: flex;
     justify-content: center;
-    /* max-width: 25%;  */
     width: auto;
-    height: 100%; 
+    height: 75%; 
   }
 
-  .idioma img{
+  img{
     max-width: 100%;
   }
+
+  .book-item {
+    margin: 20px;
+  }
+
+  
 
 @media screen and (max-width: 640px) {
   .menu-style {
@@ -330,13 +335,6 @@ img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
-  }
-
-  .book-item {
-    margin: 20px;
-    max-width: 198px;
-    display: grid;
-    place-content: center;
   }
 
   .bottom-navigation {

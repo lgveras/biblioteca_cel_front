@@ -1,43 +1,42 @@
 <template>
-    <v-bottom-navigation grow class="menu-style bottom-navigation">
-        <NuxtLink to="/"> 
-          <v-btn value="recent">
+    <v-bottom-navigation class="menu-style bottom-navigation">
+        <!-- <NuxtLink to="/">  -->
+          <v-btn to="/" value="recent">
             <v-icon>mdi-home</v-icon>
             Home
           </v-btn>
-        </NuxtLink>
+        <!-- </NuxtLink> -->
 
-        <NuxtLink to="/exemplares">
-          <v-btn value="recent">
+        <!-- <NuxtLink to="/exemplares"> -->
+          <v-btn to="/exemplares" value="recent">
             <v-icon>mdi-book-open-page-variant</v-icon>
-            Opções
+            Exemplares
           </v-btn>
-        </NuxtLink>
+        <!-- </NuxtLink> -->
 
-        <NuxtLink to="/reservados">
-          <v-btn value="favorites">
+        <!-- <NuxtLink to="/reservados"> -->
+          <v-btn to="/reservados" value="favorites">
             <v-icon>mdi-cart-outline</v-icon>
-            Favoritos
+            Reservados
           </v-btn>
-        </NuxtLink>
+        <!-- </NuxtLink> -->
 
-        <NuxtLink to="/novo">
-          <v-btn value="nearby">
+        <!-- <NuxtLink to="/novo"> -->
+          <v-btn to="/novo" value="nearby">
             <v-icon>mdi-menu</v-icon>
             Cadastro
           </v-btn>
-        </NuxtLink>
+        <!-- </NuxtLink> -->
 
         </v-bottom-navigation>
 </template>
 
 <style scoped>
 .menu-style {
-    display: flex;
-    justify-content: space-between !important;
+    /* display: flex;
+    justify-content: space-between !important; */
     background-color: aqua;
 }
-
 
 @media screen and (max-width: 640px) {
   .menu-style {
