@@ -169,7 +169,6 @@
   margin: 0;
   text-decoration: none;
   box-sizing: border-box;
-  text-align: center;
 
 }
 
@@ -179,6 +178,10 @@
 
 h1, h2 {
   font-family: 'Roboto', sans-serif;
+}
+
+#language-selector {
+    text-align: center;
 }
 
 #search-icon {
@@ -193,10 +196,6 @@ img {
   max-height:500px;
   width: auto;
   height: auto;
-}
-
-#new-books{
-    text-align: center;
 }
 
 .action-book {
@@ -220,7 +219,9 @@ img {
     margin: 20px;
   }
 
-  
+  #new-books h1{
+    text-align: center;
+  }
 
 @media screen and (max-width: 640px) {
   .menu-style {
@@ -319,7 +320,6 @@ img {
   }
 
   #language-selector {
-    text-align: center;
     width: 50%;
     margin: 0 auto;
   }
