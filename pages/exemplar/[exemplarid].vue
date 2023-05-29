@@ -22,11 +22,11 @@
                 <div class="pa-4 text-end">
                     <NuxtLink to="/">
                         <v-btn class="text-none" color="medium-emphasis" min-width="92" rounded variant="outlined"
-                                @click="dialog = false">
+                            @click="dialog = false">
                             Fechar
                         </v-btn>
                     </NuxtLink>
-                   
+
                 </div>
             </v-card>
         </v-dialog>
@@ -45,41 +45,91 @@
     </v-sheet>
 </template>
 
-<script setup>
-import {ref} from 'vue'
+<script>
+import { ref } from 'vue'
 const { $exemplar_api } = useNuxtApp();
-const route = useRoute()
-const { data, refresh } = await useAsyncData(
-    'exemplar',
-    async () => {
-        const exemplar = await $exemplar_api.getById(route.params.exemplarid);
-        console.log(exemplar);
-        return exemplar;
+
+export default {
+    async setup() {
+        const route = useRoute();
+        const data =  await $exemplar_api.getById(route.params.exemplarid);
+        // const { data, refresh } = await useAsyncData(
+        //     'exemplar',
+        //     async () => {
+        //         const exemplar = await $exemplar_api.getById(route.params.exemplarid);
+        //         console.log(exemplar);
+        //         return exemplar;
+        //     }
+        // )
+
+        return {
+            data
+        }
+    },
+
+    data: () => {
+        return {
+            dialog: ref(false),
+            bandeira: {
+                "RUSSA": "RU",
+                "ALEMAO": "DE",
+                "JAPONES": "JP",
+                "ESPANHOL": "ES",
+                "FRANCES": "FR",
+                "HEBRAICO": "IL",
+                "INGLES": "GB",
+                "ITALIANO": "IT",
+                "PORTUGUÊS": "BR",
+                "RUSSO": "RU"
+            },
+            imgSrc: "/images/cover_book.jpg"
+
+        }
+    },
+    methods: {
+        reservarExemplar: async () => {
+            console.log("reservando");
+            await $exemplar_api.setReserved(route.params.exemplarid)
+            refresh()
+            dialog = ref(true);
+        }
     }
-)
-let dialog = ref(false);
-
-const bandeira = {
-    "RUSSA": "RU",
-    "ALEMAO": "DE",
-    "JAPONES": "JP",
-    "ESPANHOL": "ES",
-    "FRANCES": "FR",
-    "HEBRAICO": "IL",
-    "INGLES": "GB",
-    "ITALIANO": "IT",
-    "PORTUGUÊS": "BR",
-    "RUSSO": "RU"
 }
 
-let imgSrc = "/images/cover_book.jpg";
+// import {ref} from 'vue'
+// const { $exemplar_api } = useNuxtApp();
+// const route = useRoute()
+// const { data, refresh } = await useAsyncData(
+//     'exemplar',
+//     async () => {
+//         const exemplar = await $exemplar_api.getById(route.params.exemplarid);
+//         console.log(exemplar);
+//         return exemplar;
+//     }
+// )
+// let dialog = ref(false);
 
-const reservarExemplar = async() =>{
-    console.log("reservando");
-    await $exemplar_api.setReserved(route.params.exemplarid)
-    refresh()
-    dialog = ref(true);
-}
+// const bandeira = {
+//     "RUSSA": "RU",
+//     "ALEMAO": "DE",
+//     "JAPONES": "JP",
+//     "ESPANHOL": "ES",
+//     "FRANCES": "FR",
+//     "HEBRAICO": "IL",
+//     "INGLES": "GB",
+//     "ITALIANO": "IT",
+//     "PORTUGUÊS": "BR",
+//     "RUSSO": "RU"
+// }
+
+// let imgSrc = "/images/cover_book.jpg";
+
+// const reservarExemplar = async() =>{
+//     console.log("reservando");
+//     await $exemplar_api.setReserved(route.params.exemplarid)
+//     refresh()
+//     dialog = ref(true);
+// }
 </script>
 
 <style scoped>
