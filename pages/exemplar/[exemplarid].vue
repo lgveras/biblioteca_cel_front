@@ -52,7 +52,9 @@ const route = useRoute()
 const { data, refresh } = await useAsyncData(
     'exemplar',
     async () => {
-        return await $exemplar_api.getById(route.params.exemplarid)
+        const exemplar = await $exemplar_api.getById(route.params.exemplarid);
+        console.log(exemplar);
+        return exemplar;
     }
 )
 let dialog = ref(false);
